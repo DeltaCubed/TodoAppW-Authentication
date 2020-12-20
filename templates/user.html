@@ -1,0 +1,25 @@
+{% extends 'base2.html' %}
+{% block title %}User{% endblock %}
+{% block content%}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for msg in messages %}
+        <p>{{msg}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+<h1>Welcome {{user}}</h1>
+{% if email == None or email == "" %}
+  <h3>Enter your email:</h3>
+<form action="#" method="POST">
+  <!-- Email form -->
+  <input type="email" name="email" 
+  placeholder="Enter email" value="{{email if email}}" />
+  <!-- Submit button -->
+  <input type="submit" value="submit" />
+</form>
+{% else: %}
+  <h3>Your email is {{email}}</h3>
+  <a href="/updateMail">Update your Email</a>
+{% endif %}
+{% endblock %}
